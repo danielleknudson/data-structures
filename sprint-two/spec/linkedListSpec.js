@@ -52,4 +52,23 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+
+  it('should remove the nodes from the list except for the head when removeNodes is called', function(){
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.addToTail(6);
+    linkedList.addToTail(8);
+    linkedList.removeNodes(5);
+    expect(linkedList.contains(5)).to.equal(false);
+  });
+
+  it("should return the value of the former nodes when removeNodes is called", function(){
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.addToTail(6);
+    linkedList.addToTail(8);
+    expect(linkedList.removeNodes(5)).to.equal(5);
+  });
+
+
 });
