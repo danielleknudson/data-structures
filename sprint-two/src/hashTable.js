@@ -53,7 +53,7 @@ HashTable.prototype.insert = function(key, value){
     this._storage.set(i, []);
   }
 
-  this._storage.get(i).push({key: key, value: value});
+  this._storage.get(i).push([key, value]);
 };
 
 HashTable.prototype.retrieve = function(key){
@@ -62,8 +62,8 @@ HashTable.prototype.retrieve = function(key){
   this._storage.each(function(house, houseIndex){
     if(houseIndex === i){
       for(var j = 0; j < house.length; j++){
-        if(house[j].key === key){
-          result = house[j].value;
+        if(house[j][0] === key){
+          result = house[j][1];
         }
       }
     }
@@ -76,8 +76,8 @@ HashTable.prototype.remove = function(key){
   this._storage.each(function(house, houseIndex){
     if(houseIndex === i){
       for(var j = 0; j < house.length; j++){
-        if(house[j].key === key){
-          house[j].value = null;
+        if(house[j][0] === key){
+          house[j][1] = null;
         }
       }
     }

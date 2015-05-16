@@ -1,7 +1,7 @@
 var BinarySearchTree = function(value){
   var tree = {};
 
-  _.extend(tree, treeMethods);
+  _.extend(tree, binaryTreeMethods);
 
   tree.value = value;
   tree.left = null;
@@ -10,9 +10,9 @@ var BinarySearchTree = function(value){
   return tree;
 };
 
-var treeMethods = {};
+var binaryTreeMethods = {};
 
-treeMethods.insert = function(value){
+binaryTreeMethods.insert = function(value){
 
   var traverse = function(node){
     if(value < node.value){
@@ -35,7 +35,7 @@ treeMethods.insert = function(value){
   traverse(this);
 };
 
-treeMethods.contains = function(value){
+binaryTreeMethods.contains = function(value){
 
   var wasFound = false;
 
@@ -65,7 +65,7 @@ treeMethods.contains = function(value){
 
 };
 
-treeMethods.depthFirstLog = function(cb){
+binaryTreeMethods.depthFirstLog = function(cb){
 
   var traverse = function(node){
     // first thing, apply callback
