@@ -3,17 +3,27 @@ var HashTable = function(){
   this._storage = LimitedArray(this._limit);
 };
 
-HashTable.prototype.insert = function(k, v){
-  var i = getIndexBelowMaxForKey(k, this._limit);
+// add "Steven", "Seagal"
+// getIndexBelowMaxForKey("Steven", this._limit) -> unique key
+
+HashTable.prototype.insert = function(key, value){
+  var i = getIndexBelowMaxForKey(key, this._limit);
+  if(!Array.isArray(this._storage[i])){
+    this._storage[i] = [];
+  }
+  this._storage[i].push([key, value]);
+
+  console.log(this._storage);
 };
 
-HashTable.prototype.retrieve = function(k){
-  var i = getIndexBelowMaxForKey(k, this._limit);
-
+HashTable.prototype.retrieve = function(key){
+  var i = getIndexBelowMaxForKey(key, this._limit);
+  return this._storage[i];
 };
 
-HashTable.prototype.remove = function(k){
-
+HashTable.prototype.remove = function(key){
+  var i = getIndexBelowMaxForKey(key, this._limit);
+  this._storage[i] = null;
 };
 
 
