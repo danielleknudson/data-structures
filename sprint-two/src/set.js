@@ -6,6 +6,7 @@ var Set = function(){
 
 var setPrototype = {};
 
+// O(n)
 setPrototype.add = function(item){
   if(this.contains(item)){
     return;
@@ -13,6 +14,7 @@ setPrototype.add = function(item){
   this._storage.push(item);
 };
 
+// O(n)
 setPrototype.contains = function(item){
   for (var i = 0; i < this._storage.length; i++){
     if (this._storage[i] === item){
@@ -22,14 +24,13 @@ setPrototype.contains = function(item){
   return false;
 };
 
+// O(n)
 setPrototype.remove = function(item){
-  var result = [];
   for (var i = 0; i < this._storage.length; i++){
-    if (this._storage[i] !== item){
-      result.push(item);
+    if (this._storage[i] === item){
+      this._storage.splice(i, 1);
     }
   }
-  this._storage = result;
 };
 
 /*
